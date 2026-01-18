@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArmorCrypt - Ultimate Encryption Suite</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>ArmorCrypt</h1>
+                <span class="tagline">The Unbreakable Encryption Suite</span>
+            </div>
+            <div class="security-status">
+                <div class="status-indicator active"></div>
+                <span>Security: ACTIVE</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="security-layers">
+                <div class="layer active" data-layer="1">
+                    <i class="fas fa-layer-group"></i>
+                    <span>ChaCha20 Layer</span>
+                </div>
+                <div class="layer active" data-layer="2">
+                    <i class="fas fa-layer-group"></i>
+                    <span>AES-256-GCM Layer</span>
+                </div>
+                <div class="layer active" data-layer="3">
+                    <i class="fas fa-key"></i>
+                    <span>Dual KDF Layer</span>
+                </div>
+                <div class="layer active" data-layer="4">
+                    <i class="fas fa-clock"></i>
+                    <span>Temporal Salt</span>
+                </div>
+                <div class="layer active" data-layer="5">
+                    <i class="fas fa-lock"></i>
+                    <span>Asymmetric Envelope</span>
+                </div>
+                <div class="layer active" data-layer="6">
+                    <i class="fas fa-check-double"></i>
+                    <span>Integrity Verification</span>
+                </div>
+                <div class="layer active" data-layer="7">
+                    <i class="fas fa-fingerprint"></i>
+                    <span>Quantum Resistance</span>
+                </div>
+            </div>
+
+            <div class="encryption-area">
+                <div class="input-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-lock"></i> Encryption Zone</h2>
+                        <button class="btn-info" id="securityInfo">
+                            <i class="fas fa-info-circle"></i> Security Details
+                        </button>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="inputText">
+                            <i class="fas fa-font"></i> Input Text
+                        </label>
+                        <textarea id="inputText" placeholder="Enter text to encrypt or decrypt..." rows="8"></textarea>
+                    </div>
+
+                    <div class="key-management">
+                        <div class="key-group">
+                            <label for="password">
+                                <i class="fas fa-key"></i> Master Password
+                            </label>
+                            <div class="password-wrapper">
+                                <input type="password" id="password" placeholder="Enter your master password">
+                                <button class="btn-eye" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="key-group">
+                            <label for="salt">
+                                <i class="fas fa-user-secret"></i> Optional Custom Salt
+                            </label>
+                            <input type="text" id="salt" placeholder="Optional: Add custom salt for extra security">
+                        </div>
+                    </div>
+
+                    <div class="security-options">
+                        <div class="option">
+                            <input type="checkbox" id="enableTemporalSalt" checked>
+                            <label for="enableTemporalSalt">Enable Temporal Salt (Time-based)</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="enableDoubleKDF" checked>
+                            <label for="enableDoubleKDF">Enable Dual Key Derivation</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="enableQuantumResistance" checked>
+                            <label for="enableQuantumResistance">Enable Quantum Resistance Layer</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-encrypt" id="encryptBtn">
+                        <i class="fas fa-shield-alt"></i> Armor Encrypt
+                    </button>
+                    <button class="btn-decrypt" id="decryptBtn">
+                        <i class="fas fa-unlock"></i> Armor Decrypt
+                    </button>
+                    <button class="btn-secondary" id="generateKeyBtn">
+                        <i class="fas fa-bolt"></i> Generate Chaos Key
+                    </button>
+                </div>
+
+                <div class="output-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-lock-open"></i> Output Zone</h2>
+                        <div class="output-actions">
+                            <button class="btn-copy" id="copyOutput">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <button class="btn-clear" id="clearOutput">
+                                <i class="fas fa-trash"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+                    <div class="output-group">
+                        <textarea id="outputText" placeholder="Encrypted/decrypted result will appear here..." rows="8" readonly></textarea>
+                    </div>
+                    
+                    <div class="encryption-info" id="encryptionInfo">
+                        <div class="info-item">
+                            <span class="info-label">Encryption Time:</span>
+                            <span class="info-value">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Key Strength:</span>
+                            <span class="info-value">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Security Score:</span>
+                            <span class="info-value">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="security-dashboard">
+                <h2><i class="fas fa-tachometer-alt"></i> Security Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <div class="card-icon entropy">
+                            <i class="fas fa-random"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Entropy Level</h3>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="entropyLevel"></div>
+                            </div>
+                            <span class="card-value" id="entropyValue">0%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon layers">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Active Layers</h3>
+                            <div class="layer-count">
+                                <span class="count" id="activeLayers">7</span>/7
+                            </div>
+                            <span class="card-value">Maximum Protection</span>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon time">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Temporal Protection</h3>
+                            <div class="time-display" id="temporalTime">00:00:00</div>
+                            <span class="card-value">Time-based Salt Active</span>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon quantum">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Quantum Resistance</h3>
+                            <div class="quantum-status active" id="quantumStatus">
+                                <i class="fas fa-check-circle"></i> Active
+                            </div>
+                            <span class="card-value">Post-Quantum Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>ArmorCrypt v1.0 - Ultimate Encryption Suite | 
+                <span id="encryptionCounter">0</span> successful encryptions performed
+            </p>
+            <p class="warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                Warning: This is a high-security encryption tool. Losing your password means permanent data loss.
+            </p>
+        </footer>
+    </div>
+
+    <!-- Security Modal -->
+    <div class="modal" id="securityModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-shield-alt"></i> ArmorCrypt Security Architecture</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="security-architecture">
+                    <div class="architecture-layer">
+                        <h3>Layer 1: ChaCha20-Poly1305</h3>
+                        <p>High-speed stream cipher with built-in authentication. Provides confidentiality and integrity.</p>
+                    </div>
+                    <div class="architecture-layer">
+                        <h3>Layer 2: AES-256-GCM</h3>
+                        <p>Military-grade symmetric encryption with Galois/Counter Mode for authenticated encryption.</p>
+                    </div>
+                    <div class="architecture-layer">
+                        <h3>Layer 3: Dual Key Derivation</h3>
+                        <p>PBKDF2 (100,000 iterations) + Argon2id (memory-hard) for brute-force resistance.</p>
+                    </div>
+                    <div class="architecture-layer">
+                        <h3>Layer 4: Temporal Salt System</h3>
+                        <p>Time-based salt values ensure identical data encrypts differently at different times.</p>
+                    </div>
+                    <div class="architecture-layer">
+                        <h3>Layer 5: Asymmetric Envelope</h3>
+                        <p>Elliptic Curve Cryptography (P-521) for key exchange and digital signatures.</p>
+                    </div>
+                    <div class="architecture-layer">
+                        <h3>Layer 6: Integrity Verification</h3>
+                        <p>Multi-layer HMAC and digital signatures prevent tampering and ensure data authenticity.</p>
+                    </div>
+                    <div class="architecture-layer">
+                        <h3>Layer 7: Quantum Resistance</h3>
+                        <p>Lattice-based cryptography and large key sizes protect against future quantum attacks.</p>
+                    </div>
+                </div>
+                <div class="security-note">
+                    <p><strong>Total Key Space:</strong> > 2²⁵⁶ possible keys (more than atoms in the observable universe)</p>
+                    <p><strong>Brute-force Resistance:</strong> Estimated > 10⁵⁶ years with current technology</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="armorcrypt.js"></script>
+    <script src="ui.js"></script>
+</body>
+  </html>
